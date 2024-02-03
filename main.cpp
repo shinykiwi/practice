@@ -4,6 +4,8 @@
 
 bool canTravelTo(std::vector<std::vector<bool>>& gameMatrix, int fromRow, int fromColumn, int toRow, int toColumn)
 {
+    // note: this function is used in the void function boatMovements()
+
     // my thought process:
 
     // if abs(toRow - fromRow) == 2:
