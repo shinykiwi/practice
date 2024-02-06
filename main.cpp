@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <tuple>
+#include <string>
 
 bool canTravelTo(std::vector<std::vector<bool>>& gameMatrix, int fromRow, int fromColumn, int toRow, int toColumn)
 {
@@ -60,10 +62,29 @@ void boatMovements(){
 
 }
 
+std::pair<double, double> findRoots(double a, double b, double c)
+{
+    // code here
+    double sqrtPart = std::sqrt(((std::pow(b, 2)) - (4 * (a * c))));
+    std::pair<double, double> roots;
+    roots.first = ((-b) + sqrtPart) / (2 * a);
+    roots.second = ((-b) - sqrtPart) / (2 * a);
+
+    return roots;
+}
+
+void quadraticEquation(){
+    std::pair<double,double> roots = findRoots(2, 10, 8);
+    std::cout << "Roots: " + std::to_string(roots.first) + ", " + std::to_string(roots.second);
+}
+
 int main()
 {
     // for this challenge: https://www.testdome.com/tests/cpp-online-test/34
     boatMovements();
+
+    // for this challenge: https://www.testdome.com/questions/cpp/quadratic-equation/84852
+    quadraticEquation();
 
 
 }
