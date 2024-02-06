@@ -3,6 +3,8 @@
 #include <cmath>
 #include <tuple>
 #include <string>
+#include <map>
+#include <vector>
 
 bool canTravelTo(std::vector<std::vector<bool>>& gameMatrix, int fromRow, int fromColumn, int toRow, int toColumn)
 {
@@ -78,6 +80,31 @@ void quadraticEquation(){
     std::cout << "Roots: " + std::to_string(roots.first) + ", " + std::to_string(roots.second);
 }
 
+// 1. Two Sum challenge on LeetCode, using a one-pass hash table
+std::vector<int> twoSum(std::vector<int>& nums, int target) {
+
+    std::map<int, int> map {};
+
+
+    for (int i = 0; i < nums.size(); ++i) {
+
+        int complement = target - nums[i]; // ex. 9 - 2 = 7;
+        // if we already added the complement, return
+        if(map.contains(complement) && map[complement] != i){
+            return {i, map[complement]};
+        }
+        // if not, then add it
+        // key: each elements value; value: element's index
+        map.insert({nums[i], i});
+
+    }
+
+    // in case there is no solution
+    return {-1};
+
+
+}
+
 int main()
 {
     // for this challenge: https://www.testdome.com/tests/cpp-online-test/34
@@ -85,6 +112,11 @@ int main()
 
     // for this challenge: https://www.testdome.com/questions/cpp/quadratic-equation/84852
     quadraticEquation();
+    
+
+
+
+
 
 
 }
